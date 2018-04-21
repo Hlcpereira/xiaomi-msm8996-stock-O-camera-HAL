@@ -1,0 +1,13 @@
+ui_print("Stock Camera HAL for custom ROMs");
+ui_print("By joe2k01");
+ui_print("Mounting /vendor");
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/cust", "/vendor", "");
+ui_print("Extracting blobs");
+package_extract_dir("vendor", "/vendor");
+ui_print("Patching init scripts");
+package_extract_dir("tools", "/tmp/tools");
+set_perm(0, 0, 0777, "/tmp/tools/sed.sh");
+run_program("/tmp/tools/sed.sh");
+ui_print("Unmounting /vendor");
+unmount("/vendor");
+ui_print("Done!");
