@@ -12,7 +12,7 @@ package_extract_dir("system", "/system");
 ui_print("======================================");
 ui_print("||       Patching init scripts      ||");
 package_extract_dir("tools", "/tmp/tools");
-set_perm(0, 0, 0777, "/tmp/tools/sed.sh");
+set_metadata_recursive("/tmp/tools/sed.sh", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);
 run_program("/tmp/tools/sed.sh");
 ui_print("======================================");
 ui_print("||         Unmounting /vendor        ||");
